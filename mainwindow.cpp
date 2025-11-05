@@ -6,6 +6,8 @@
 #include <QFileDialog>//选择文件
 #include <QMessageBox>//消息窗口
 #include <QTextStream>//读文件
+#include <QColorDialog>
+#include <QFontDialog>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -32,6 +34,16 @@ MainWindow::MainWindow(QWidget *parent)
     ui->action_Cut->setEnabled(false);
     ui->action_Undo->setEnabled(false);
     ui->action_Redo->setEnabled(false);
+
+    QPlainTextEdit::LineWrapMode mode=ui->TextEdit->lineWrapMode();
+    if(mode==QTextEdit::NoWrap){
+        ui->TextEdit->setLineWrapMode(QPlainTextEdit::WidgetWidth);
+        ui->action_AutoWrap->setChecked(false);
+    }
+    else{
+        ui->TextEdit->setLineWrapMode(QPlainTextEdit::NoWrap);
+        ui->action_AutoWrap->setChecked(true);
+    }
 }
 
 MainWindow::~MainWindow()
@@ -239,5 +251,55 @@ void MainWindow::on_TextEdit_undoAvailable(bool b)
 void MainWindow::on_action_SelectAll_triggered()
 {
     ui->TextEdit->selectAll();
+}
+
+
+void MainWindow::on_action_FontColor_triggered()
+{
+    QColor color=QColorDialog::getColor(Qt::black,this,"选择颜色");
+    if(color.isValid()){
+        ui->TextEdit->setStyleSheet(QString("QPlainTextEdit{color:%1}").arg(color.name()));
+    }
+}
+
+
+void MainWindow::on_action_FontBackgroundColor_triggered()
+{
+    QColor color=QColorDialog::getColor(Qt::black,this,"选择颜色");
+    if(color.isValid()){
+        ui->TextEdit->setStyleSheet(QString("QPlainTextEdit{background-color:%1}").arg(color.name()));
+    }
+}
+
+
+void MainWindow::on_action_AutoWrap_triggered()
+{
+    QPlainTextEdit::LineWrapMode mode=ui->TextEdit->lineWrapMode();
+    if(mode==QTextEdit::NoWrap){
+        ui->TextEdit->setLineWrapMode(QPlainTextEdit::WidgetWidth);
+        ui->action_AutoWrap->setChecked(true);
+    }
+    else{
+        ui->TextEdit->setLineWrapMode(QPlainTextEdit::NoWrap);
+        ui->action_AutoWrap->setChecked(false);
+    }
+}
+
+
+void MainWindow::on_action_Font_triggered()
+{
+    bool ok=false;
+    QFont font=QFontDialog::getFont(&ok,this);
+    if(ok) ui->TextEdit->setFont(font);
+}
+
+
+void MainWindow::on_action_EditorBackgroundColor_triggered()
+{
+    QColor color=QColorDialog::getColor(Qt::black,this,"选择颜色");
+    if(color.isValid()){
+        this->setStyleSheet(QString("QMainWindow{background-color:%1}").arg(color.name()));
+    }
+    //设计编辑器背景颜色，没法了只能拿mainwindow来了哈哈
 }
 

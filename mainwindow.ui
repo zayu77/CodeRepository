@@ -361,6 +361,9 @@
    </property>
   </action>
   <action name="action_AutoWrap">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="icon">
     <iconset resource="icons.qrc">
      <normaloff>:/new/images/img/changeLine.png</normaloff>:/new/images/img/changeLine.png</iconset>
@@ -442,6 +445,9 @@
    </property>
   </action>
   <action name="action_ToolBar">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="icon">
     <iconset resource="icons.qrc">
      <normaloff>:/new/images/img/tool.png</normaloff>:/new/images/img/tool.png</iconset>
@@ -457,6 +463,9 @@
    </property>
   </action>
   <action name="action_StatusBar">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="icon">
     <iconset resource="icons.qrc">
      <normaloff>:/new/images/img/status.png</normaloff>:/new/images/img/status.png</iconset>
