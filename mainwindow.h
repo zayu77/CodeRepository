@@ -25,10 +25,25 @@ private slots:
 
     void on_action_Replace_triggered();
 
+    void on_action_New_triggered();
+
+    void on_action_Open_triggered();
+
+    void on_action_Save_triggered();
+
+    void on_action_SaveAs_triggered();
+
+    void on_TextEdit_textChanged();
+
 private:
     Ui::MainWindow *ui;
 
     QLabel statusCursorLabel;
     QLabel statusLabel;
+
+    QString filePath;
+    bool textChanged;
+
+    bool userEditConfirmed();
 };
 #endif // MAINWINDOW_H
