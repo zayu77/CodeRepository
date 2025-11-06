@@ -64,7 +64,7 @@ void MainWindow::on_action_About_triggered()
 
 void MainWindow::on_action_Find_triggered()
 {
-    SearchDialog dlg;//不能为缺省值
+    SearchDialog dlg(this,ui->TextEdit);//不能为缺省值
     dlg.exec();
 }
 
