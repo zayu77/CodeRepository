@@ -64,14 +64,14 @@ void MainWindow::on_action_About_triggered()
 
 void MainWindow::on_action_Find_triggered()
 {
-    SearchDialog dlg;
+    SearchDialog dlg;//不能为缺省值
     dlg.exec();
 }
 
 
 void MainWindow::on_action_Replace_triggered()
 {
-    ReplaceDialog dlg;
+    ReplaceDialog dlg(this,ui->TextEdit);
     dlg.exec();
 }
 
