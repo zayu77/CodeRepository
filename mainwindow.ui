@@ -92,6 +92,7 @@
     </property>
     <addaction name="action_ToolBar"/>
     <addaction name="action_StatusBar"/>
+    <addaction name="action_AutoSave"/>
    </widget>
    <widget class="QMenu" name="menu_H">
     <property name="title">
@@ -139,6 +140,7 @@
    <addaction name="separator"/>
    <addaction name="action_ToolBar"/>
    <addaction name="action_StatusBar"/>
+   <addaction name="action_AutoSave"/>
   </widget>
   <action name="action_New">
    <property name="icon">
@@ -489,6 +491,24 @@
    </property>
    <property name="toolTip">
     <string>关于</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+  </action>
+  <action name="action_AutoSave">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/new/images/img/autoSave.png</normaloff>:/new/images/img/autoSave.png</iconset>
+   </property>
+   <property name="text">
+    <string>自动保存</string>
+   </property>
+   <property name="toolTip">
+    <string>自动保存</string>
    </property>
    <property name="menuRole">
     <enum>QAction::NoRole</enum>

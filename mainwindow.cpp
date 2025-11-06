@@ -8,6 +8,7 @@
 #include <QTextStream>//读文件
 #include <QColorDialog>
 #include <QFontDialog>
+#include <QTimer>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -49,6 +50,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->action_ToolBar->setChecked(true);
     ui->action_StatusBar->setChecked(true);
     ui->action_ShowLineNo->setChecked(true);
+    ui->action_AutoSave->setChecked(false);
 }
 
 MainWindow::~MainWindow()
@@ -361,5 +363,21 @@ void MainWindow::on_action_ShowLineNo_triggered()
     bool IsVisible = ui->TextEdit->isLineNumbersVisible();
     ui->TextEdit->setLineNumbersVisible(!IsVisible);
     ui->action_ShowLineNo->setChecked(!IsVisible);
+}
+
+
+void MainWindow::on_action_AutoSave_triggered()
+{
+    bool isAutoSave=ui->action_AutoSave->isChecked();
+    if(!isAutoSave){
+        ui->action_AutoSave->setChecked(!isAutoSave);
+    }
+    if(isAutoSave){
+        QTimer *timer=new QTimer(this);
+        connect(timer, &QTimer::timeout, this, [this]() {
+            on_action_Save_triggered();  // 正确调用保存函数
+        });
+        timer->start(3000);  // 3秒
+    }
 }
 

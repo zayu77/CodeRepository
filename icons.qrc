@@ -17,5 +17,6 @@
         <file>img/undo.png</file>
         <file>img/saveAs.png</file>
         <file>img/newText.png</file>
+        <file>img/autoSave.png</file>
     </qresource>
 </RCC>

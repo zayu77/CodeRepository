@@ -73,6 +73,8 @@ private slots:
 
     void on_action_ShowLineNo_triggered();
 
+    void on_action_AutoSave_triggered();
+
 private:
     Ui::MainWindow *ui;
 
