@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QLabel>
+#include <QTimer>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -85,5 +86,7 @@ private:
     bool textChanged;
 
     bool userEditConfirmed();
+
+    QTimer *autoSaveTimer;
 };
 #endif // MAINWINDOW_H

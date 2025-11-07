@@ -51,6 +51,11 @@ MainWindow::MainWindow(QWidget *parent)
     ui->action_StatusBar->setChecked(true);
     ui->action_ShowLineNo->setChecked(true);
     ui->action_AutoSave->setChecked(false);
+
+    autoSaveTimer=new QTimer(this);
+    connect(autoSaveTimer, &QTimer::timeout, this, [this]() {
+        on_action_Save_triggered();  // 正确调用保存函数
+    });
 }
 
 MainWindow::~MainWindow()
@@ -368,16 +373,11 @@ void MainWindow::on_action_ShowLineNo_triggered()
 
 void MainWindow::on_action_AutoSave_triggered()
 {
-    bool isAutoSave=ui->action_AutoSave->isChecked();
-    if(!isAutoSave){
-        ui->action_AutoSave->setChecked(!isAutoSave);
+    if(ui->action_AutoSave->isChecked()){
+        autoSaveTimer->start(3000);  // 3秒
     }
-    if(isAutoSave){
-        QTimer *timer=new QTimer(this);
-        connect(timer, &QTimer::timeout, this, [this]() {
-            on_action_Save_triggered();  // 正确调用保存函数
-        });
-        timer->start(3000);  // 3秒
+    else {
+        autoSaveTimer->stop();
     }
 }
 
