@@ -1,6 +1,7 @@
 #include "masterview.h"
 #include "ui_masterview.h"
 #include <QDebug>
+#include "idatabase.h"
 
 MasterView::MasterView(QWidget *parent)
     : QMainWindow(parent)
@@ -11,6 +12,8 @@ MasterView::MasterView(QWidget *parent)
     //this->setWindowFlag(Qt::FramelessWindowHint);隐藏边框
 
     goLoginView();
+
+    IDatabase::getInstance();//有点像单例模式，实际也差不多
 }
 
 MasterView::~MasterView()
@@ -29,6 +32,9 @@ void MasterView::goWelcomeView()
 {
     welcomeView=new WelcomeView(this);
     pushWidgetToStackView(welcomeView);
+    connect(welcomeView,SIGNAL(goDoctorView()),this,SLOT(goDoctorView()));
+    connect(welcomeView,SIGNAL(goDepartmentView()),this,SLOT(goDepartmentView()));
+    connect(welcomeView,SIGNAL(goPatientView()),this,SLOT(goPatientView()));
 }
 
 void MasterView::goDoctorView()
@@ -47,6 +53,7 @@ void MasterView::goPatientView()
 {
     patientView=new PatientView(this);
     pushWidgetToStackView(patientView);
+    connect(patientView,SIGNAL(goPatientEditView()),this,SLOT(goPatientEditView()));
 }
 
 void MasterView::goPatientEditView()

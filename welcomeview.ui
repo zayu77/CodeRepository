@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>欢迎</string>
   </property>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>60</x>
@@ -39,7 +39,7 @@
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
-       <widget class="QPushButton" name="pushButton">
+       <widget class="QPushButton" name="btnDepartment">
         <property name="enabled">
          <bool>true</bool>
         </property>
@@ -56,12 +56,12 @@
          </size>
         </property>
         <property name="text">
-         <string>PushButton</string>
+         <string>科室管理</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_2">
+       <widget class="QPushButton" name="btnDoctor">
         <property name="enabled">
          <bool>true</bool>
         </property>
@@ -78,12 +78,12 @@
          </size>
         </property>
         <property name="text">
-         <string>PushButton</string>
+         <string>医生管理</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_3">
+       <widget class="QPushButton" name="btnPatient">
         <property name="enabled">
          <bool>true</bool>
         </property>
@@ -100,7 +100,7 @@
          </size>
         </property>
         <property name="text">
-         <string>PushButton</string>
+         <string>患者管理</string>
         </property>
        </widget>
       </item>
