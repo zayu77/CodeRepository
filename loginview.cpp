@@ -16,7 +16,8 @@ LoginView::~LoginView()
 
 void LoginView::on_btnSignIn_clicked()
 {
-    IDatabase::getInstance();
-    emit loginSuccess();
+    //获取到输入框的用户名和密码
+    QString status=IDatabase::getInstance().userLogin(ui->inputUserName->text(),ui->inputPassword->text());
+    if(status=="loginOK") emit loginSuccess();//登录状态是ok则进入到欢迎界面
 }
 
